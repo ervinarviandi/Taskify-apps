@@ -20,7 +20,7 @@ const texts = [
 export default function Home() {
   return (
    <>
-   <div className="mt-64 w-full max-w-6xl mx-auto px-5 ">
+   <div className="mt-60 w-full max-w-6xl mx-auto px-5 ">
     
     <MorphingText texts={texts} className=" whitespace-pre-wrap z-10 lg:text-7xl text-3xl"/>
 

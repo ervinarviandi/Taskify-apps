@@ -7,20 +7,32 @@ import { MdOutlineCancel } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 import { cn } from '@/lib/utils';
 import { GridPattern } from './ui/grid-pattern';
+import { animate, stagger } from 'framer-motion';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+
+
+
+
 
 const TodoList = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [inputValue, setInputValue] = useState<string>('');
-  const [editingTodoId, setEditingTodoId] = useState<number | null>(null); // Track which todo is being edited
-  const [editText, setEditText] = useState<string>(''); // Store the edited text
+  const [editingTodoId, setEditingTodoId] = useState<number | null>(null); 
+  const [editText, setEditText] = useState<string>(''); 
 
-  // Load todos from local storage on component mount
+
+  animate([
+    ["ul", { opacity: 1 }],
+    ["li", { x: [10, 0] }, { delay: stagger(.2) }]
+  ])
+ 
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem('todos') || '[]') as Todo[];
     setTodos(storedTodos);
   }, []);
 
-  // Save todos to local storage whenever they change
+  
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
@@ -50,8 +62,7 @@ const TodoList = () => {
   };
 
   const startEditing = (id: number, text: string) => {
-    setEditingTodoId(id); // Set the todo being edited
-    setEditText(text); // Set the current text of the todo
+    setEditingTodoId(id); 
   };
 
   const saveEdit = (id: number) => {
@@ -61,15 +72,22 @@ const TodoList = () => {
           todo.id === id ? { ...todo, text: editText } : todo
         )
       );
-      setEditingTodoId(null); // Exit edit mode
-      setEditText(''); // Clear the edit text
+      setEditingTodoId(null); 
+      setEditText(''); 
     }
   };
 
   const cancelEdit = () => {
-    setEditingTodoId(null); // Exit edit mode
-    setEditText(''); // Clear the edit text
+    setEditingTodoId(null); 
+    setEditText(''); 
   };
+
+
+  AOS.init ({
+    once: true,
+    duration : 400
+  });
+  
 
   return (
     <div className='w-full h-screen rounded-lg mx-auto p-5 size-full  overflow-hidden  bg-background '>
@@ -85,15 +103,15 @@ const TodoList = () => {
       <button onClick={addTodo} className=' bg-purple-400 p-2 rounded-r-lg flex items-center gap-2'>Add Task</button>
         </div>
         <div className='flex justify-center'>
-      <ul className='w-full max-w-md '>
+      <ul className='w-full max-w-md  ' data-aos="fade-down">
         {todos.map((todo) => (
-          <li key={todo.id} className=' my-3 rounded-lg p-2 flex justify-between  '>
+          <li key={todo.id} className=' my-3 rounded-lg p-2 flex justify-between   ' >
             {editingTodoId === todo.id ? (
               // Edit mode
               <>
                 <input
                 className='  border-1 rounded-lg w-full  dark:bg-[#27272a]
-           bg-[#f4f4f5]  p-2 items-center '
+           bg-[#f4f4f5]   p-2 items-center '
                   type="text"
                   value={editText}
                   onChange={(e) => setEditText(e.target.value)}
