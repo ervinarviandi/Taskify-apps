@@ -7,11 +7,6 @@ import { MdOutlineCancel } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 import { cn } from '@/lib/utils';
 import { GridPattern } from './ui/grid-pattern';
-import { animate, stagger } from 'framer-motion';
-import AOS from 'aos';
-import 'aos/dist/aos.css'; 
-
-
 
 
 
@@ -22,10 +17,7 @@ const TodoList = () => {
   const [editText, setEditText] = useState<string>(''); 
 
 
-  animate([
-    ["ul", { opacity: 1 }],
-    ["li", { x: [10, 0] }, { delay: stagger(.2) }]
-  ])
+
  
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem('todos') || '[]') as Todo[];
@@ -84,10 +76,6 @@ const TodoList = () => {
   };
 
 
-  AOS.init ({
-    once: true,
-    duration : 400
-  });
   
 
   return (
@@ -104,7 +92,7 @@ const TodoList = () => {
       <button onClick={addTodo} className=' bg-purple-400 p-2 rounded-r-lg flex items-center gap-2'>Add Task</button>
         </div>
         <div className='flex justify-center'>
-      <ul className='w-full max-w-md  ' data-aos="fade-down">
+      <ul className='w-full max-w-md'>
         {todos.map((todo) => (
           <li key={todo.id} className=' my-3 rounded-lg p-2 flex justify-between   ' >
             {editingTodoId === todo.id ? (
