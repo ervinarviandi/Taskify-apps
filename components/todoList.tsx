@@ -63,6 +63,7 @@ const TodoList = () => {
 
   const startEditing = (id: number, text: string) => {
     setEditingTodoId(id); 
+    setEditText(text);
   };
 
   const saveEdit = (id: number) => {
@@ -111,7 +112,7 @@ const TodoList = () => {
               <>
                 <input
                 className='  border-1 rounded-lg w-full  dark:bg-[#27272a]
-           bg-[#f4f4f5]   p-2 items-center '
+           bg-[#f4f4f5] border-teal-500  p-2 items-center '
                   type="text"
                   value={editText}
                   onChange={(e) => setEditText(e.target.value)}
