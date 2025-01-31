@@ -1,9 +1,4 @@
 
-import { ModeToggle } from "@/components/atoms/modeToggle";
-import Image from "next/image";
-import Headers from "@/components/Headers";
-import TodoList from "@/components/todoList";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 import { MorphingText } from "@/components/ui/morphing-text";
 import { LuListTodo } from "react-icons/lu";

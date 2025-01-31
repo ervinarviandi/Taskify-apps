@@ -2,10 +2,8 @@
 import { useState, useEffect } from 'react';
 import { Todo } from '@/components/types/Todo';
 import { FaRegTrashCan } from "react-icons/fa6";
-import { FaEdit } from "react-icons/fa";
 import { FaSave } from "react-icons/fa";
 import { MdOutlineCancel } from "react-icons/md";
-import { BsPlusCircleFill } from "react-icons/bs";
 import { MdEdit } from "react-icons/md";
 import { cn } from '@/lib/utils';
 import { GridPattern } from './ui/grid-pattern';
