@@ -14,6 +14,8 @@ import { AnimatedGradientText } from './ui/animated-gradient-text';
 
 
 
+
+
 const TodoList = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [inputValue, setInputValue] = useState<string>('');
@@ -22,19 +24,8 @@ const TodoList = () => {
  
  
   
- 
-  const [data, setData] = useState<string[]>([]);
-  const [count, setCount] = useState<number>(0);
 
-  const addData = () => {
-    const newData = `Data ${count + 1}`;
-    setData([...data, newData]);
-    setCount(count + 1);
-  };
-
- 
-
- 
+  
   useEffect(() => {
     const storedTodos = JSON.parse(localStorage.getItem('todos') || '[]') as Todo[];
     setTodos(storedTodos);
@@ -127,7 +118,7 @@ const TodoList = () => {
         <div className='flex justify-center'>
       <ul className='w-full max-w-md'>
         {todos.map((todo) => (
-          <li key={todo.id} className=' my-3 rounded-lg p-2 flex justify-between   ' >
+          <li key={todo.id} className=' my-3 rounded-lg p-2 flex justify-between border dark:bg-cyan-500/20 bg-purple-500/20 shadow-lg'>
             {editingTodoId === todo.id ? (
               // Edit mode
               <>
