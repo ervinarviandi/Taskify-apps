@@ -9,14 +9,30 @@ import { cn } from '@/lib/utils';
 import { GridPattern } from './ui/grid-pattern';
 
 
+import { ChevronRight } from "lucide-react";
+import { AnimatedGradientText } from './ui/animated-gradient-text';
+
+
 
 const TodoList = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [inputValue, setInputValue] = useState<string>('');
   const [editingTodoId, setEditingTodoId] = useState<number | null>(null); 
   const [editText, setEditText] = useState<string>(''); 
+ 
+ 
+  
+ 
+  const [data, setData] = useState<string[]>([]);
+  const [count, setCount] = useState<number>(0);
 
+  const addData = () => {
+    const newData = `Data ${count + 1}`;
+    setData([...data, newData]);
+    setCount(count + 1);
+  };
 
+ 
 
  
   useEffect(() => {
@@ -76,11 +92,28 @@ const TodoList = () => {
   };
 
 
+
+  
+
+
   
 
   return (
     <div className='w-full h-screen rounded-lg mx-auto p-5 size-full  overflow-hidden  bg-background '>
+        <AnimatedGradientText className='mt-10 mb-5'>
+        🎉 <hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />{" "}
+        <span
+          className={cn(
+            `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
+          )}
+        >
+          Jumlah Task {todos.length}
+        </span>
+        <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+      </AnimatedGradientText>
         <div className='flex justify-center items-center'>
+    
+
       <input
       className='bg-[#f4f4f5] dark:bg-[#27272a] p-2 rounded-l-lg'
         type="text"
@@ -89,7 +122,7 @@ const TodoList = () => {
         onKeyPress={(e) => e.key === 'Enter' && addTodo()}
         placeholder="Add a new task"
         />
-      <button onClick={addTodo} className=' bg-purple-400 p-2 rounded-r-lg flex items-center gap-2'>Add Task</button>
+      <button onClick={addTodo}  className=' bg-purple-400 p-2 rounded-r-lg flex items-center gap-2'>Add Task</button>
         </div>
         <div className='flex justify-center'>
       <ul className='w-full max-w-md'>
@@ -122,6 +155,7 @@ const TodoList = () => {
                 <div className='flex justify-center gap-2 ml-2'>
                 <button onClick={() => startEditing(todo.id, todo.text)}><MdEdit size={20} className='text-amber-500'/></button>
                 <button onClick={() => deleteTodo(todo.id)}><FaRegTrashCan size={20} className='text-rose-600'/></button>
+                
                 </div>
               </>
             )}
