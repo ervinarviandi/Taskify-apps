@@ -1,18 +1,23 @@
 
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
-import {Roboto} from "next/font/google"
+import {Flavors, Roboto} from "next/font/google"
 import NextTopLoader from 'nextjs-toploader';
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const roboto = Roboto({
+const flavors = Flavors({
+  variable: '--font-flavors',
   weight: '400',
   subsets: ['latin'],
 })
 
-const robotoVariable = `font-family: ${roboto.style.fontFamily}`;
+const roboto = Roboto({
+  variable: '--font-roboto',
+  weight: '400',
+  subsets: ['latin'],
+})
 
+const FontsVariable = `font-family: ${flavors.style.fontFamily}, ${roboto.style.fontFamily}`;
 
 
 export const metadata: Metadata = {
@@ -30,9 +35,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body 
-        className={`${robotoVariable}   antialiased`}
+        className={`${FontsVariable}  antialiased`}
       >
-        <NextTopLoader color="#c27aff"/>
+        <NextTopLoader color="#8e51ff"/>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

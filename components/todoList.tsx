@@ -90,7 +90,7 @@ const TodoList = () => {
   
 
   return (
-    <div className='w-full h-screen rounded-lg mx-auto p-5 size-full  overflow-hidden  bg-background '>
+    <div className='w-full min-h-screen pb-10 rounded-lg mx-auto p-5 size-full  overflow-hidden  bg-background '>
         <AnimatedGradientText className='mt-10 mb-5'>
         🎉 <hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />{" "}
         <span
@@ -98,7 +98,7 @@ const TodoList = () => {
             `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
           )}
         >
-          Jumlah Task {todos.length}
+          Number Of Task  {todos.length} 
         </span>
         <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
       </AnimatedGradientText>
@@ -113,12 +113,12 @@ const TodoList = () => {
         onKeyPress={(e) => e.key === 'Enter' && addTodo()}
         placeholder="Add a new task"
         />
-      <button onClick={addTodo}  className=' bg-purple-400 p-2 rounded-r-lg flex items-center gap-2'>Add Task</button>
+      <button onClick={addTodo}  className=' bg-violet-400 p-2 rounded-r-lg flex items-center gap-2'>Add Task</button>
         </div>
         <div className='flex justify-center'>
-      <ul className='w-full max-w-md'>
+      <ul className='w-full max-w-md mb-10'>
         {todos.map((todo) => (
-          <li key={todo.id} className=' my-3 rounded-lg p-2 flex justify-between border dark:bg-cyan-500/20 bg-purple-500/20 shadow-lg'>
+          <li key={todo.id} className=' my-3 rounded-lg p-2 flex justify-between border dark:bg-violet-400/50 backdrop-blur-xl bg-violet-500/50 shadow-lg '>
             {editingTodoId === todo.id ? (
               // Edit mode
               <>

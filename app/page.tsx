@@ -25,10 +25,10 @@ export default function Home() {
     <MorphingText texts={texts} className=" whitespace-pre-wrap z-10 lg:text-7xl text-3xl"/>
 
     <div className="py-5 text-center">
-      <p>Aplikasi Taskify itu seperti teman setia buat atur jadwal dan tugas. Yuk, coba mulai hari ini biar nggak ada yang kelewat lagi!</p>
+      <p className="font-roboto">Aplikasi Taskify itu seperti teman setia buat atur jadwal dan tugas. Yuk, coba mulai hari ini biar nggak ada yang kelewat lagi!</p>
     </div>
     <div className="flex justify-center my-5">
-     <Link href={"/task"} className="py-2 px-6 rounded-lg bg-purple-400 flex items-center  whitespace-pre-wrap gap-x-2">Mulai Membuat Tugas <LuListTodo size={20} /></Link>
+     <Link href={"/task"} className="py-2 px-6 rounded-lg bg-violet-400 flex items-center  whitespace-pre-wrap gap-x-2">Mulai Membuat Tugas <LuListTodo size={20} /></Link>
     </div>
 
     {/* grid */}
