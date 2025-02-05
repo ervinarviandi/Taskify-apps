@@ -10,6 +10,8 @@ import { GridPattern } from './ui/grid-pattern';
 import { Sora } from 'next/font/google';
 import { ChevronRight } from "lucide-react";
 import { AnimatedGradientText } from './ui/animated-gradient-text';
+import "@/app/globals.css";
+
 
 
 const sora = Sora({
@@ -120,15 +122,15 @@ const TodoList = () => {
       <button onClick={addTodo}  className={` ${sora.className} bg-violet-400 p-2 rounded-r-lg flex items-center text-sm gap-2`}>Add Task</button>
         </div>
         <div className='flex justify-center'>
-      <ul className='w-full max-w-md mb-10'>
+      <ul className='w-full max-w-md mb-10 overflow-hidden '>
         {todos.map((todo) => (
-          <li key={todo.id} className={`${sora.className} my-3 rounded-lg p-2 flex justify-between border dark:bg-violet-400/50 backdrop-blur-xl bg-violet-500/50 shadow-lg `}>
+          <li key={todo.id} className={`${sora.className} my-3 rounded-lg p-2 flex justify-between border dark:bg-violet-400/50 backdrop-blur-xl bg-violet-500/50 shadow-lg  myScrollbar overflow-x-auto overflow-hidden`}>
             {editingTodoId === todo.id ? (
               // Edit mode
               <>
                 <input
                 className='  border-1 rounded-lg w-full  dark:bg-[#27272a]
-           bg-[#f4f4f5] border-teal-500  p-2 items-center '
+           bg-[#f4f4f5] border-teal-500  p-2 items-center overflow-x-auto  '
                   type="text"
                   value={editText}
                   onChange={(e) => setEditText(e.target.value)}
@@ -147,7 +149,7 @@ const TodoList = () => {
                 >
                   {todo.text}
                 </span>
-                <div className='flex justify-center gap-2 ml-2'>
+                <div className='flex justify-center gap-2 ml-2 '>
                 <button onClick={() => startEditing(todo.id, todo.text)}><MdEdit size={20} className='text-amber-500'/></button>
                 <button onClick={() => deleteTodo(todo.id)}><FaRegTrashCan size={20} className='text-rose-600'/></button>
                 
