@@ -4,6 +4,9 @@ import { MorphingText } from "@/components/ui/morphing-text";
 import { LuListTodo } from "react-icons/lu";
 import { cn } from '@/lib/utils';
 import { GridPattern } from "@/components/ui/grid-pattern";
+import { Sora } from "next/font/google";
+import { Flavors } from "next/font/google";
+
 const texts = [
   "Produktivitas",
   "Efisiensi",
@@ -17,18 +20,37 @@ const texts = [
   "Kontrol",
   "Keseimbangan",
 ];
+
+
+
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
+});
+
+
+
+
+const flavors = Flavors({
+  subsets: ["latin"],
+  variable: "--font-flavors",
+  weight: "400"
+})
+
+
+
 export default function Home() {
   return (
    <>
-   <div className="mt-60 w-full max-w-6xl mx-auto px-5 ">
+   <div className="mt-52 w-full max-w-6xl mx-auto px-5 ">
     
-    <MorphingText texts={texts} className=" whitespace-pre-wrap z-10 lg:text-7xl text-3xl"/>
+    <MorphingText texts={texts} className={` ${flavors.className} font-bold whitespace-pre-wrap z-10 lg:text-7xl text-3xl`}/>
 
     <div className="py-5 text-center">
-      <p className="font-roboto">Aplikasi Taskify itu seperti teman setia buat atur jadwal dan tugas. Yuk, coba mulai hari ini biar nggak ada yang kelewat lagi!</p>
+      <p className={`${sora.className} text-gray-200 lg:text-md text-sm`}>Ayo coba aplikasi <span className="text-purple-300">taskify</span> biar semua tugasmu tercatat rapi dan kamu bisa fokus menyelesaikannya satu per satu. No more stress!. Yuk, coba mulai hari ini biar nggak ada yang kelewat lagi!</p>
     </div>
     <div className="flex justify-center my-5">
-     <Link href={"/task"} className="py-2 px-6 rounded-lg bg-violet-400 flex items-center  whitespace-pre-wrap gap-x-2">Mulai Membuat Tugas <LuListTodo size={20} /></Link>
+     <Link href={"/task"} className={`${sora.className} py-2 px-6 rounded-lg bg-violet-400 flex items-center  whitespace-pre-wrap gap-x-2`}>Mulai Membuat Tugas <LuListTodo size={20} /></Link>
     </div>
 
     {/* grid */}

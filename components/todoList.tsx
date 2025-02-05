@@ -7,12 +7,16 @@ import { MdOutlineCancel } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 import { cn } from '@/lib/utils';
 import { GridPattern } from './ui/grid-pattern';
-
-
+import { Sora } from 'next/font/google';
 import { ChevronRight } from "lucide-react";
 import { AnimatedGradientText } from './ui/animated-gradient-text';
 
 
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-sora",
+  weight: "300",
+});
 
 
 
@@ -95,7 +99,7 @@ const TodoList = () => {
         🎉 <hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />{" "}
         <span
           className={cn(
-            `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`,
+            `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent ${sora.className}`,
           )}
         >
           Number Of Task  {todos.length} 
@@ -106,19 +110,19 @@ const TodoList = () => {
     
 
       <input
-      className='bg-[#f4f4f5] dark:bg-[#27272a] p-2 rounded-l-lg'
+      className={`${sora.className}bg-[#f4f4f5] dark:bg-[#27272a] p-2 rounded-l-lg`}
         type="text"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onKeyPress={(e) => e.key === 'Enter' && addTodo()}
         placeholder="Add a new task"
         />
-      <button onClick={addTodo}  className=' bg-violet-400 p-2 rounded-r-lg flex items-center gap-2'>Add Task</button>
+      <button onClick={addTodo}  className={` ${sora.className} bg-violet-400 p-2 rounded-r-lg flex items-center text-sm gap-2`}>Add Task</button>
         </div>
         <div className='flex justify-center'>
       <ul className='w-full max-w-md mb-10'>
         {todos.map((todo) => (
-          <li key={todo.id} className=' my-3 rounded-lg p-2 flex justify-between border dark:bg-violet-400/50 backdrop-blur-xl bg-violet-500/50 shadow-lg '>
+          <li key={todo.id} className={`${sora.className} my-3 rounded-lg p-2 flex justify-between border dark:bg-violet-400/50 backdrop-blur-xl bg-violet-500/50 shadow-lg `}>
             {editingTodoId === todo.id ? (
               // Edit mode
               <>

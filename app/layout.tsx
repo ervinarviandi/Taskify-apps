@@ -37,7 +37,7 @@ export default function RootLayout({
       <body 
         className={`${FontsVariable}  antialiased`}
       >
-        <NextTopLoader color="#8e51ff"/>
+        <NextTopLoader color="#a684ff"/>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
