@@ -126,7 +126,7 @@ const TodoList = () => {
         <div className='flex justify-center'>
       <ul className='w-full max-w-md mb-10 overflow-hidden z-50  '>
         {todos.map((todo) => (
-          <li key={todo.id} className={`${sora.className}  my-3 rounded-lg p-2 flex justify-between border dark:bg-transparent  hover:bg-emerald-200 duration-200 dark:hover:bg-sky-500 transition-all backdrop-blur-xl bg-transparent shadow-md  myScrollbar overflow-x-auto overflow-hidden `}>
+          <li key={todo.id} className={`${sora.className}  my-3 rounded-lg p-2 flex justify-between border dark:bg-transparent  hover:bg-emerald-200 duration-200 dark:hover:bg-[#03dac59e] transition-all backdrop-blur-xl bg-transparent shadow-md  myScrollbar overflow-x-auto overflow-hidden `}>
             {editingTodoId === todo.id ? (
               // Edit mode              
               <>
