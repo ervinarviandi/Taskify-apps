@@ -29,8 +29,6 @@ const sora = Sora({
 });
 
 
-
-
 const flavors = Flavors({
   subsets: ["latin"],
   variable: "--font-flavors",

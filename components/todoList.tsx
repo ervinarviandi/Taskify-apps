@@ -13,6 +13,8 @@ import { AnimatedGradientText } from './ui/animated-gradient-text';
 import "@/app/globals.css";
 
 
+// background default dark:bg-[#27272a]
+
 
 const sora = Sora({
   subsets: ["latin"],
@@ -112,7 +114,7 @@ const TodoList = () => {
     
 
       <input
-      className={`${sora.className}bg-[#f4f4f5] dark:bg-[#27272a] p-2 rounded-l-lg`}
+      className={`${sora.className}  p-2 backdrop-blur-md dark:bg-[#27272a] bg-[#f4f4f5] z-50 rounded-l-lg placeholder:text-green-400 focus:bg-green-500`}
         type="text"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
@@ -122,39 +124,45 @@ const TodoList = () => {
       <button onClick={addTodo}  className={` ${sora.className} bg-violet-400 p-2 rounded-r-lg flex items-center text-sm gap-2`}>Add Task</button>
         </div>
         <div className='flex justify-center'>
-      <ul className='w-full max-w-md mb-10 overflow-hidden '>
+      <ul className='w-full max-w-md mb-10 overflow-hidden z-50  '>
         {todos.map((todo) => (
-          <li key={todo.id} className={`${sora.className} my-3 rounded-lg p-2 flex justify-between border dark:bg-violet-400/50 backdrop-blur-xl bg-violet-500/50 shadow-lg  myScrollbar overflow-x-auto overflow-hidden`}>
+          <li key={todo.id} className={`${sora.className}  my-3 rounded-lg p-2 flex justify-between border dark:bg-transparent  hover:bg-emerald-200 duration-200 dark:hover:bg-sky-500 transition-all backdrop-blur-xl bg-transparent shadow-md  myScrollbar overflow-x-auto overflow-hidden `}>
             {editingTodoId === todo.id ? (
-              // Edit mode
+              // Edit mode              
               <>
                 <input
-                className='  border-1 rounded-lg w-full  dark:bg-[#27272a]
+                className='  border-1 rounded-lg w-full dark:bg-[#27272a]
            bg-[#f4f4f5] border-teal-500  p-2 items-center overflow-x-auto  '
                   type="text"
                   value={editText}
                   onChange={(e) => setEditText(e.target.value)}
                 />
                 <div className='flex justify-center gap-2 ml-2 '>
-                <button onClick={() => saveEdit(todo.id)}><FaSave size={20} className='text-purple-400' /></button>
-                <button onClick={cancelEdit}><MdOutlineCancel size={24} className='text-rose-600'/></button>
+                <button onClick={() => saveEdit(todo.id)}><FaSave size={20} className='text-teal-400' /></button>
+                <button onClick={cancelEdit}><MdOutlineCancel size={24} className='text-pink-400'/></button>
                 </div>
               </>
             ) : (
               // View mode
               <>
+            
+                {/* <span>ervin</span> */}
                 <span
-                  style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+                  style={{ textDecoration: todo.completed ? 'line-through' : 'none',
+                   
+                   }}
                   onClick={() => toggleTodo(todo.id)}
                 >
                   {todo.text}
                 </span>
                 <div className='flex justify-center gap-2 ml-2 '>
-                <button onClick={() => startEditing(todo.id, todo.text)}><MdEdit size={20} className='text-amber-500'/></button>
-                <button onClick={() => deleteTodo(todo.id)}><FaRegTrashCan size={20} className='text-rose-600'/></button>
+                <button onClick={() => startEditing(todo.id, todo.text)}><MdEdit size={20} className='text-amber-400'/></button>
+                <button onClick={() => deleteTodo(todo.id)}><FaRegTrashCan size={20} className='text-pink-400'/></button>
                 
                 </div>
+               
               </>
+              
             )}
           </li>
         ))}

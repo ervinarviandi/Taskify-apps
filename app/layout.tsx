@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-import {Flavors, Roboto} from "next/font/google"
+import {Flavors} from "next/font/google"
 import NextTopLoader from 'nextjs-toploader';
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -11,13 +11,9 @@ const flavors = Flavors({
   subsets: ['latin'],
 })
 
-const roboto = Roboto({
-  variable: '--font-roboto',
-  weight: '400',
-  subsets: ['latin'],
-})
 
-const FontsVariable = `font-family: ${flavors.style.fontFamily}, ${roboto.style.fontFamily}`;
+
+const FontsVariable = `font-family: ${flavors.style.fontFamily} `;
 
 
 export const metadata: Metadata = {
