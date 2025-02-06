@@ -114,7 +114,7 @@ const TodoList = () => {
     
 
       <input
-      className={`${sora.className}  p-2 backdrop-blur-md dark:bg-[#27272a] bg-[#f4f4f5] z-50 rounded-l-lg placeholder:text-green-400 focus:bg-green-500`}
+      className={`${sora.className}  p-2 backdrop-blur-md dark:bg-[#27272a] bg-[#f4f4f5] z-50 rounded-l-lg placeholder:text-green-400 `}
         type="text"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
@@ -126,7 +126,9 @@ const TodoList = () => {
         <div className='flex justify-center'>
       <ul className='w-full max-w-md mb-10 overflow-hidden z-50  '>
         {todos.map((todo) => (
-          <li key={todo.id} className={`${sora.className}  my-3 rounded-lg p-2 flex justify-between border dark:bg-transparent  hover:bg-emerald-200 duration-200 dark:hover:bg-[#03dac59e] transition-all backdrop-blur-xl bg-transparent shadow-md  myScrollbar overflow-x-auto overflow-hidden `}>
+          <li key={todo.id} className={`${sora.className}  my-3 rounded-lg p-2 flex justify-between border dark:bg-transparent  hover:bg-emerald-200 duration-200 dark:hover:bg-[#03dac59e] transition-all backdrop-blur-xl bg-transparent shadow-md  myScrollbar overflow-x-auto overflow-hidden  `}>
+            <div className='h-10 w-20 bg-gradient-to-r from-violet-500  to-rose-200 rounded-full absolute left-20 blur-3xl'>ervin</div>
+            
             {editingTodoId === todo.id ? (
               // Edit mode              
               <>

@@ -16,6 +16,14 @@ body {
   display: none;
 }
 
+
+.oval {
+  width: 10px;
+  height: 10px;
+  background-color: aquamarine;
+  position: absolute;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
